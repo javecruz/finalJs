@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+    <title>Practica Final</title>
+</head>
+
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <h1 class="display-1 mt-5 text-center">EMPRESA</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="output">
+                    <i class="fas fa-plus-circle nuevo" data-toggle="modal" data-target="#exampleModal"></i>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th class="text-center">#</th>
+                                <th class="text-center">Nombre</th>
+                                <th class="text-center">Ciudad</th>
+                                <th class="text-center">Sexo</th>
+                                <th class="text-center">Telefono</th>
+                                <th class="text-center">Fecha Nacimiento</th>
+                                <th class="text-center">Editar</th>
+                                <th class="text-center">Borrar</th>
+                            </tr>
+                        </thead>
+                        <tbody class="datosTabla">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="modal-container">
+                    
+                </div>
+
+            </div>
+        </div>
+        
+    </div>
+    <script src="lib/jquery-3.2.1.js"></script>
+    <script src="lib/handlebars.runtime-v4.0.11.js"></script>
+    <script src="lib/popper.min.js"></script>
+    <script src="lib/bootstrap.min.js"></script>
+    <script src="templates/js/renderTable.js"></script>
+    <script src="templates/js/modal.js"></script>
+    <script src="js/config.js"></script>
+    <script src="js/events.js"></script>
+    <script src="js/client.js"></script>
+    <script src="js/clientView.js"></script>
+    <script src="js/clientList.js"></script>
+    <script src="js/clientListView.js"></script>
+    <script src="js/main.js"></script>
+    
+    <script>
+
+    // necesito cargar el modal, realmente no lo necesito cargar..
+    // var ejemplo = {
+    //     titulo:"Nuevo Cliente",
+    //     opcion_confirmar:"Confirmar Nuevo Cliente",
+    //     cliente:{"cliente_id":"","nombres":"","ciudad":"","alternativas":"","telefono":"","fecha_nacimiento":""}
+    // }
+    //events.publish("renderClient",ejemplo);
+
+    </script>
+</body>
+
+</html>

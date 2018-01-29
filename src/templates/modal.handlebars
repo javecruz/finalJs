@@ -1,0 +1,62 @@
+<div class="modal" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">{{titulo}}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form>
+
+                          <div class="form-group">
+                            <label for="formGroupExampleInput">Nombre</label>
+                            <input type="text" class="form-control" id="modal_nombre" placeholder="Example input" value="{{cliente.nombres}}">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formGroupExampleInput2">Ciudad</label>
+                            <input type="text" class="form-control" id="modal_ciudad" placeholder="Another input" value="{{cliente.ciudad}}">
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formGroupExampleInput">Sexo</label>
+                          </div>
+                          <div class="form-check">
+                  
+                            <label class="form-check-label" for="exampleRadios1">
+                              <input class="form-check-input" type="radio" name="sexo" id="exampleRadios1" value="H" {{#if hombre}}checked{{/if}}>
+                              Hombre
+                            </label>
+                            
+                            <label class="form-check-label" for="exampleRadios2">
+                              <input class="form-check-input" type="radio" name="sexo" id="exampleRadios2" value="M" {{#if mujer}}checked{{/if}}>
+                              Mujer
+                            </label>
+                          </div>
+
+                          <div class="form-group">
+                            <label for="formGroupExampleInput">Telefono</label>
+                            <input type="text" class="form-control" id="modal_telefono" placeholder="Example input" value="{{cliente.telefono}}">
+                          </div>
+
+                          {{!-- <div class="form-group">
+                            <label for="formGroupExampleInput">Fecha Nacimiento</label>
+                            <input type="text" class="form-control" id="modal_fecha_nacimiento" placeholder="Example input" value="{{formatDate cliente.fecha_nacimiento}}">
+                          </div> --}}
+
+                          <div class="form-group">
+                            <label for="formGroupExampleInput">Fecha Nacimiento</label>
+                            <input type="date" class="form-control" id="modal_fecha_nacimiento" placeholder="Example input" value="{{setDateOnInput cliente.fecha_nacimiento}}">
+                          </div>
+
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+                        <button type="button" id="{{id_confirmar}}" class="btn btn-primary" data-dismiss="modal" data-id="{{cliente.cliente_id}}">{{opcion_confirmar}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>

@@ -1,0 +1,13 @@
+{{#each this}}
+	<tr id="{{cliente_id}}">
+		<th class="text-center" scope='row'>{{@index}}</th>
+		<td class="text-center">{{nombres}}</td>
+		<td class="text-center">{{ciudad}}</td>
+		<td class="text-center">{{alternativas}}</td>
+		<td class="text-center">{{telefono}}</td>
+		<td class="text-center">{{formatDate fecha_nacimiento}}</td>
+		<td class="text-center"><i class="fas fa-edit editar" data-toggle="modal" data-target="#exampleModal"></i></td>
+		<td class="text-center"><i class="fas fa-trash-alt borrar"></i></td>
+	</tr>
+{{/each}}
+

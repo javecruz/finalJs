@@ -1,0 +1,30 @@
+(function() {
+  var template = Handlebars.template, templates = Handlebars.templates = Handlebars.templates || {};
+templates['modal'] = template({"1":function(container,depth0,helpers,partials,data) {
+    return "checked";
+},"compiler":[7,">= 4.0.0"],"main":function(container,depth0,helpers,partials,data) {
+    var stack1, helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression, alias5=container.lambda;
+
+  return "<div class=\"modal\" id=\"exampleModal\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">\r\n            <div class=\"modal-dialog\" role=\"document\">\r\n                <div class=\"modal-content\">\r\n                    <div class=\"modal-header\">\r\n                        <h5 class=\"modal-title\" id=\"exampleModalLabel\">"
+    + alias4(((helper = (helper = helpers.titulo || (depth0 != null ? depth0.titulo : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"titulo","hash":{},"data":data}) : helper)))
+    + "</h5>\r\n                        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\r\n                            <span aria-hidden=\"true\">&times;</span>\r\n                        </button>\r\n                    </div>\r\n                    <div class=\"modal-body\">\r\n                        <form>\r\n\r\n                          <div class=\"form-group\">\r\n                            <label for=\"formGroupExampleInput\">Nombre</label>\r\n                            <input type=\"text\" class=\"form-control\" id=\"modal_nombre\" placeholder=\"Example input\" value=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.cliente : depth0)) != null ? stack1.nombres : stack1), depth0))
+    + "\">\r\n                          </div>\r\n\r\n                          <div class=\"form-group\">\r\n                            <label for=\"formGroupExampleInput2\">Ciudad</label>\r\n                            <input type=\"text\" class=\"form-control\" id=\"modal_ciudad\" placeholder=\"Another input\" value=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.cliente : depth0)) != null ? stack1.ciudad : stack1), depth0))
+    + "\">\r\n                          </div>\r\n\r\n                          <div class=\"form-group\">\r\n                            <label for=\"formGroupExampleInput\">Sexo</label>\r\n                          </div>\r\n                          <div class=\"form-check\">\r\n                  \r\n                            <label class=\"form-check-label\" for=\"exampleRadios1\">\r\n                              <input class=\"form-check-input\" type=\"radio\" name=\"sexo\" id=\"exampleRadios1\" value=\"H\" "
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.hombre : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ">\r\n                              Hombre\r\n                            </label>\r\n                            \r\n                            <label class=\"form-check-label\" for=\"exampleRadios2\">\r\n                              <input class=\"form-check-input\" type=\"radio\" name=\"sexo\" id=\"exampleRadios2\" value=\"M\" "
+    + ((stack1 = helpers["if"].call(alias1,(depth0 != null ? depth0.mujer : depth0),{"name":"if","hash":{},"fn":container.program(1, data, 0),"inverse":container.noop,"data":data})) != null ? stack1 : "")
+    + ">\r\n                              Mujer\r\n                            </label>\r\n                          </div>\r\n\r\n                          <div class=\"form-group\">\r\n                            <label for=\"formGroupExampleInput\">Telefono</label>\r\n                            <input type=\"text\" class=\"form-control\" id=\"modal_telefono\" placeholder=\"Example input\" value=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.cliente : depth0)) != null ? stack1.telefono : stack1), depth0))
+    + "\">\r\n                          </div>\r\n\r\n\r\n                          <div class=\"form-group\">\r\n                            <label for=\"formGroupExampleInput\">Fecha Nacimiento</label>\r\n                            <input type=\"date\" class=\"form-control\" id=\"modal_fecha_nacimiento\" placeholder=\"Example input\" value=\""
+    + alias4((helpers.setDateOnInput || (depth0 && depth0.setDateOnInput) || alias2).call(alias1,((stack1 = (depth0 != null ? depth0.cliente : depth0)) != null ? stack1.fecha_nacimiento : stack1),{"name":"setDateOnInput","hash":{},"data":data}))
+    + "\">\r\n                          </div>\r\n\r\n                        </form>\r\n                    </div>\r\n                    <div class=\"modal-footer\">\r\n                        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">Cerrar</button>\r\n                        <button type=\"button\" id=\""
+    + alias4(((helper = (helper = helpers.id_confirmar || (depth0 != null ? depth0.id_confirmar : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"id_confirmar","hash":{},"data":data}) : helper)))
+    + "\" class=\"btn btn-primary\" data-dismiss=\"modal\" data-id=\""
+    + alias4(alias5(((stack1 = (depth0 != null ? depth0.cliente : depth0)) != null ? stack1.cliente_id : stack1), depth0))
+    + "\">"
+    + alias4(((helper = (helper = helpers.opcion_confirmar || (depth0 != null ? depth0.opcion_confirmar : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"opcion_confirmar","hash":{},"data":data}) : helper)))
+    + "</button>\r\n                    </div>\r\n                </div>\r\n            </div>\r\n        </div>";
+},"useData":true});
+})();
