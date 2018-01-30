@@ -39,20 +39,21 @@ var clientList = (function(){
 
 			 if(data.cliente != undefined){
 			 	var nuevo = employeeMaker.createNewEmployee(data.cliente)
-				arrayClients.push(nuevo)
+			 	nuevo.fechaAlta = new Date();
+				arrayClients.push(nuevo);
+
+				//problema 1, la fecha de alta tiene un trigger, y la que me devuelve en la inserción no la tiene
+				//SOLUCION, añado TEMPORALMENTE la fecha desde cliente, al volver a cargar la lista la cargara de
 				events.publish("renderTable",arrayClients)
 				console.log("insertado");
 			 }else{
 			 	console.log("error");
 			 }
 
-			//poniendo el "json" me devuelve array con TODOS los clientes, en teoria es el ultimo
-			
-			
-
 		},"json")
 	
 	}
+
 
 	function updateClient(clientJson){
 		
@@ -69,6 +70,8 @@ var clientList = (function(){
 			arrayClients[index].alternativas = clientJson.alternativas;
 			arrayClients[index].fecha_nacimiento = clientJson.fecha_nacimiento;
 			arrayClients[index].telefono = clientJson.telefono;
+			arrayClients[index].provincia = clientJson.provincia;
+			arrayClients[index].direccion = clientJson.direccion;
 
 			events.publish("renderTable",arrayClients)
 		}else{

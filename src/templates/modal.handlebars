@@ -41,14 +41,19 @@
                             <input type="text" class="form-control" id="modal_telefono" placeholder="Example input" value="{{cliente.telefono}}">
                           </div>
 
-                          {{!-- <div class="form-group">
-                            <label for="formGroupExampleInput">Fecha Nacimiento</label>
-                            <input type="text" class="form-control" id="modal_fecha_nacimiento" placeholder="Example input" value="{{formatDate cliente.fecha_nacimiento}}">
-                          </div> --}}
-
                           <div class="form-group">
                             <label for="formGroupExampleInput">Fecha Nacimiento</label>
                             <input type="date" class="form-control" id="modal_fecha_nacimiento" placeholder="Example input" value="{{setDateOnInput cliente.fecha_nacimiento}}">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="formGroupExampleInput2">Direccion</label>
+                            <input type="text" class="form-control" id="modal_direccion" placeholder="Another input" value="{{cliente.direccion}}">
+                          </div>
+
+                           <div class="form-group">
+                            <label for="formGroupExampleInput2">Provincia</label>
+                            <input type="text" class="form-control" id="modal_provincia" placeholder="Another input" value="{{cliente.provincia}}">
                           </div>
 
                         </form>

@@ -13,7 +13,10 @@ var factory = function(){
 			ciudad:json.ciudad,
 			alternativas:json.sexo,
 			telefono:json.telefono,
-			fecha_nacimiento:json.fechaNacimiento
+			fecha_nacimiento:json.fechaNacimiento,
+			direccion:json.direccion,
+			provincia:json.provincia,
+			fechaAlta:json.fechaAlta
 			}
 		}
 	

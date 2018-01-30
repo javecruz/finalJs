@@ -29,7 +29,9 @@ $(document).ready(function(){
         		"ciudad":clientList.arrayClients[index].ciudad,
         		"alternativas":clientList.arrayClients[index].alternativas,
         		"telefono":clientList.arrayClients[index].telefono,
-        		"fecha_nacimiento":clientList.arrayClients[index].fecha_nacimiento
+        		"fecha_nacimiento":clientList.arrayClients[index].fecha_nacimiento,
+        		"direccion":clientList.arrayClients[index].direccion,
+        		"provincia":clientList.arrayClients[index].provincia
         	}
     	}
 
@@ -48,7 +50,9 @@ $(document).ready(function(){
 			"ciudad":$("#modal_ciudad").val(),
 			"alternativas":$('input[name=sexo]:checked').val(),
 			"telefono":$("#modal_telefono").val(),
-			"fecha_nacimiento":$("#modal_fecha_nacimiento").val() + " 00:00:00"   // es para que cuando modifique guarde en el array el mismo formato que recibe, da igual porque hace el update igual pero por seguir un orden...
+			"fecha_nacimiento":$("#modal_fecha_nacimiento").val() + " 00:00:00",    // es para que cuando modifique guarde en el array el mismo formato que recibe, da igual porque hace el update igual pero por seguir un orden...
+			"direccion":$("#modal_direccion").val(),
+			"provincia":$("#modal_provincia").val()
 		}
 
 		// ajax
@@ -69,7 +73,9 @@ $(document).ready(function(){
         		"ciudad":"",
         		"alternativas":"",
         		"telefono":"",
-        		"fecha_nacimiento":""
+        		"fecha_nacimiento":"",
+        		"direccion":"",
+        		"provincia":""
         	}
     	}
 
@@ -84,7 +90,9 @@ $(document).ready(function(){
 			"ciudad":$("#modal_ciudad").val(),
 			"alternativas":$('input[name=sexo]:checked').val(),
 			"telefono":$("#modal_telefono").val(),
-			"fecha_nacimiento":$("#modal_fecha_nacimiento").val()
+			"fecha_nacimiento":$("#modal_fecha_nacimiento").val(),
+			"direccion":$("#modal_direccion").val(),
+			"provincia":$("#modal_provincia").val()
 		}
 
 		clientList.addNewClient(data);
