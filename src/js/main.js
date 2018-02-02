@@ -5,7 +5,9 @@ $(document).ready(function(){
 	// evento para mandar datos al modal de editar
 	$(".datosTabla").on("click",".editar",function(){
 
+
 		var id = $(this).closest("tr").attr('id');
+
 		var index = clientList.getClientFromArray(id);
 
 		//necesito sabeer si es hombre o mujer para enviar a la plantilla el checked correcto
@@ -105,6 +107,32 @@ $(document).ready(function(){
 	$(".datosTabla").on("click",".borrar",function(){
 		var trId = $(this).closest("tr").attr("id");
 		clientList.deleteClient(trId);
+	})
+
+	//modal para enseñar el mapa
+	$(".datosTabla").on("click",".mapa",function(){
+		//empiezo el ajax para coger la latitud y longitud de la direccion del tr
+		var id = $(this).closest("tr").attr('id');
+		var index = clientList.getClientFromArray(id);
+
+		var address = clientList.arrayClients[index].direccion;
+		var key = "AIzaSyDMAvzeTh-Y79QJ4xejgBwpIzZBGQFidSA";
+
+		var url = "https://maps.googleapis.com/maps/api/geocode/json";
+
+		$.ajax({
+					url:url,
+					type:"GET",
+					data:{address:address,key:key},
+					dataType:"json",
+					success: function(data){
+						uluru = {lat:data.results[0].geometry.location.lat,lng:data.results[0].geometry.location.lng};
+					},
+					error: function(){
+						console.log("Hubo algun error")
+					}
+				})
+
 	})
 
 
