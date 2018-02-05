@@ -6,7 +6,7 @@ $(document).ready(function(){
 	$(".datosTabla").on("click",".editar",function(){
 
 
-		var id = $(this).closest("tr").attr('id');
+		var id = $(this).closest("tr").attr('class');
 
 		var index = clientList.getClientFromArray(id);
 
@@ -63,7 +63,7 @@ $(document).ready(function(){
 	})
 
 	//evento que dispara el modal para nuevo
-	$(".output").on("click",".nuevo", function(){
+	$(".datosTabla").on("click",".nuevo", function(){
 
 		var data = {
         	titulo:"Estas Creando un Nuevo Cliente",
@@ -105,14 +105,14 @@ $(document).ready(function(){
 
 	//voy hacer el borrar
 	$(".datosTabla").on("click",".borrar",function(){
-		var trId = $(this).closest("tr").attr("id");
+		var trId = $(this).closest("tr").attr("class");
 		clientList.deleteClient(trId);
 	})
 
 	//modal para enseñar el mapa
 	$(".datosTabla").on("click",".mapa",function(){
 		//empiezo el ajax para coger la latitud y longitud de la direccion del tr
-		var id = $(this).closest("tr").attr('id');
+		var id = $(this).closest("tr").attr('class');
 		var index = clientList.getClientFromArray(id);
 
 		var address = clientList.arrayClients[index].direccion;
@@ -127,6 +127,7 @@ $(document).ready(function(){
 					dataType:"json",
 					success: function(data){
 						uluru = {lat:data.results[0].geometry.location.lat,lng:data.results[0].geometry.location.lng};
+						initMap();
 					},
 					error: function(){
 						console.log("Hubo algun error")

@@ -20,35 +20,17 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-12">
-                <div class="output">
-                    <i class="fas fa-plus-circle nuevo" data-toggle="modal" data-target="#exampleModal"></i>
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th class="text-center">#</th>
-                                <th class="text-center">Nombre</th>
-                                <th class="text-center">Ciudad</th>
-                                <th class="text-center">Sexo</th>
-                                <th class="text-center">Telefono</th>
-                                <th class="text-center">Fecha Nacimiento</th>
-                                <th class="text-center">Dirección</th>
-                                <th class="text-center">Provincia</th>
-                                <th class="text-center">Fecha Alta</th>
-                                <th class="text-center">Editar</th>
-                                <th class="text-center">Borrar</th>
-                                <th class="text-center">Localización</th>
-                            </tr>
-                        </thead>
-                        <tbody class="datosTabla">
-                        </tbody>
-                    </table>
-                </div>
+            
+            <div class="col-12 datosTabla">
 
+                  
+            </div>
+
+            <div class="col-12">
                 <div class="modal-container">
                 </div>
-
-
+            </div>
+            <div class="col-12">
                 <div class="modal-map-container">
                     <div class="modal" id="modalMap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                         <div class="modal-dialog" role="document">
@@ -60,7 +42,7 @@
                                     </button>
                                 </div>
                                 <div class="modal-body">
-                                    <div id="map" style="margin-left: auto; margin-right: auto; width: 50%;height: 400px;background-color: grey;"></div>
+                                    <div id="map" style="margin-left: auto; margin-right: auto; width: 100%;height: 700px;background-color: grey;"></div>
                                 </div>
                             </div>
                         </div>
@@ -69,17 +51,15 @@
             </div>
         </div>
     </div>
-
-<!-- <div id="map" style="margin-left: auto; margin-right: auto; width: 50%;height: 400px;background-color: grey;"></div> -->
-    <!-- <div id="map" style="margin-left: auto; margin-right: auto; width: 50%;height: 400px;background-color: grey;"></div> -->
     <script>
     // https://maps.googleapis.com/maps/api/geocode/json?address=DIRECCION+AQUI&key=AIzaSyDMAvzeTh-Y79QJ4xejgBwpIzZBGQFidSA
     var uluru;
+
     function initMap() {
         //ejemplo lat: 39.495, lng: -0.366
         //var uluru = {lat: 39.4694017, lng: -0.3715474};
         var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 11,
+            zoom: 13,
             center: uluru
         });
         var marker = new google.maps.Marker({
@@ -88,7 +68,6 @@
         });
     }
     </script>
-
     <script src="lib/jquery-3.2.1.js"></script>
     <script src="lib/handlebars.runtime-v4.0.11.js"></script>
     <script src="lib/popper.min.js"></script>

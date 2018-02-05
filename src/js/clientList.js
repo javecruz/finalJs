@@ -87,9 +87,12 @@ var clientList = (function(){
 
 		//espera un $_POST['id']
 		$.post(config.url+"eliminar.php",{id:id},function(){
-			$("#"+id).remove();
+			//$("#"+id).remove();
 			var index = getIndexClientFromArray(id);
 			arrayClients.splice(index,1);
+			//fix temporal, tengo problemas al borrar al tener 2 sitios distintos.. donde sale el cliente, antes borraba por id, ahora lo cambie
+			// a clase y al borrar el tr no se borra, vuelvo a imprimir y au
+			events.publish("renderTable",arrayClients);
 		})
 	}
 

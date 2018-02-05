@@ -1,17 +1,98 @@
-{{#each this}}
-	<tr id="{{cliente_id}}">
-		<th class="text-center" scope='row'>{{@index}}</th>
-		<td class="text-center">{{nombres}}</td>
-		<td class="text-center">{{ciudad}}</td>
-		<td class="text-center">{{alternativas}}</td>
-		<td class="text-center">{{telefono}}</td>
-		<td class="text-center">{{formatDate fecha_nacimiento}}</td>
-		<td class="text-center">{{direccion}}</td>
-		<td class="text-center">{{provincia}}</td>
-		<td class="text-center">{{fechaAlta}}</td>
-		<td class="text-center"><i class="fas fa-edit editar" data-toggle="modal" data-target="#exampleModal"></i></td>
-		<td class="text-center"><i class="fas fa-trash-alt borrar"></i></td>
-		<td class="text-center"><i class="fas fa-globe mapa" data-toggle="modal" data-target="#modalMap"></i></td>
-	</tr>
-{{/each}}
+<div class="output d-none d-lg-block">
+    <i class="fas fa-plus-circle nuevo" data-toggle="modal" data-target="#exampleModal"></i>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th class="text-center">#</th>
+                <th class="text-center">Nombre</th>
+                <th class="text-center">Ciudad</th>
+                <th class="text-center">Sexo</th>
+                <th class="text-center">Telefono</th>
+                <th class="text-center">Fecha Nacimiento</th>
+                <th class="text-center">Dirección</th>
+                <th class="text-center">Provincia</th>
+                <th class="text-center">Fecha Alta</th>
+                <th class="text-center">Editar</th>
+                <th class="text-center">Borrar</th>
+                <th class="text-center">Localización</th>
+            </tr>
+        </thead>
+        <tbody class="datosTabla">
+			{{#each this}}
+				<tr class="{{cliente_id}}">
+					<th class="text-center" scope='row'>{{@index}}</th>
+					<td class="text-center">{{nombres}}</td>
+					<td class="text-center">{{ciudad}}</td>
+					<td class="text-center">{{alternativas}}</td>
+					<td class="text-center">{{telefono}}</td>
+					<td class="text-center">{{formatDate fecha_nacimiento}}</td>
+					<td class="text-center">{{direccion}}</td>
+					<td class="text-center">{{provincia}}</td>
+					<td class="text-center">{{fechaAlta}}</td>
+					<td class="text-center"><i class="fas fa-edit editar" data-toggle="modal" data-target="#exampleModal"></i></td>
+					<td class="text-center"><i class="fas fa-trash-alt borrar"></i></td>
+					<td class="text-center"><i class="fas fa-globe mapa" data-toggle="modal" data-target="#modalMap"></i></td>
+				</tr>
+			{{/each}}
+			</tbody>
+    </table>
+</div>
 
+
+
+
+ <div class="output-mobile d-block d-lg-none">
+    <i class="fas fa-plus-circle nuevo fixed-top" data-toggle="modal" data-target="#exampleModal"></i>
+    <table class="table">
+        <tbody class="datosTablaMobile">
+        	{{#each this}}
+            <tr>
+                <th scope="row" class="text-center">{{@index}}</th>
+                <td colspan="2" class="text-center font-weight-bold">{{nombres}}</td>
+            </tr>
+            <tr>
+                <td class="text-center font-weight-bold">Ciudad</td>
+                <td colspan="2" class="text-center">{{ciudad}}</td>
+            </tr>
+            <tr>
+                <td class="text-center font-weight-bold">Sexo</td>
+                <td colspan="2" class="text-center">{{alternativas}}</td>
+            </tr>
+            <tr>
+                <td class="text-center font-weight-bold">Teléfono</td>
+                <td colspan="2" class="text-center">{{telefono}}</td>
+            </tr>
+            <tr>
+                <td class="text-center font-weight-bold">F.Nacimiento.</td>
+                <td colspan="2" class="text-center">{{formatDate fecha_nacimiento}}</td>
+            </tr>
+            <tr>
+                <td class="text-center font-weight-bold">Dirección</td>
+                <td colspan="2" class="text-center">{{direccion}}</td>
+            </tr>
+            <tr>
+                <td class="text-center font-weight-bold">Provincia</td>
+                <td colspan="2" class="text-center">{{provincia}}</td>
+            </tr>
+            <tr>
+                <td class="text-center font-weight-bold">Alta</td>
+                <td colspan="2" class="text-center">{{fechaAlta}}</td>
+            </tr>
+            <tr  class="{{cliente_id}}">
+                <td class="text-center">
+                    <i class="fas fa-edit editar" data-toggle="modal" data-target="#exampleModal"></i>
+                </td>
+                <td class="text-center">
+                    <i class="fas fa-trash-alt borrar"></i>
+                </td>
+                <td class="text-center">
+                    <i class="fas fa-globe mapa" data-toggle="modal" data-target="#modalMap"></i>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3" class="bg-danger"></td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
