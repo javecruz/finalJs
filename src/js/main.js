@@ -54,7 +54,8 @@ $(document).ready(function(){
 			"telefono":$("#modal_telefono").val(),
 			"fecha_nacimiento":$("#modal_fecha_nacimiento").val() + " 00:00:00",    // es para que cuando modifique guarde en el array el mismo formato que recibe, da igual porque hace el update igual pero por seguir un orden...
 			"direccion":$("#modal_direccion").val(),
-			"provincia":$("#modal_provincia").val()
+			"provincia":$("#modal_provincia").val(),
+			"fechaAlta":clientList.arrayClients[clientList.getClientFromArray(id)].fechaAlta
 		}
 
 		// ajax

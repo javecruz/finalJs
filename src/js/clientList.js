@@ -43,7 +43,7 @@ var clientList = (function(){
 				arrayClients.push(nuevo);
 
 				//problema 1, la fecha de alta tiene un trigger, y la que me devuelve en la inserción no la tiene
-				//SOLUCION, añado TEMPORALMENTE la fecha desde cliente, al volver a cargar la lista la cargara de
+				//SOLUCION, añado TEMPORALMENTE la fecha desde cliente, al volver a cargar la lista la cargara de la bbdd
 				events.publish("renderTable",arrayClients)
 				console.log("insertado");
 			 }else{
