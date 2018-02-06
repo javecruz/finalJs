@@ -14,6 +14,13 @@ class DAOFactory{
 		return new ClienteMySqlExtDAO();
 	}
 
+	/**
+	 * @return VehiculosDAO
+	 */
+	public static function getVehiculosDAO(){
+		return new VehiculosMySqlExtDAO();
+	}
+
 
 }
 ?>

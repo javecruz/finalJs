@@ -1,20 +1,20 @@
 <?php
 /**
- * Class that operate on table 'cliente'. Database Mysql.
+ * Class that operate on table 'vehiculos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2018-01-17 21:01
+ * @date: 2018-02-06 16:38
  */
-class ClienteMySqlDAO implements ClienteDAO{
+class VehiculosMySqlDAO implements VehiculosDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @return ClienteMySql 
+	 * @return VehiculosMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM cliente WHERE id = ?';
+		$sql = 'SELECT * FROM vehiculos WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class ClienteMySqlDAO implements ClienteDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM cliente';
+		$sql = 'SELECT * FROM vehiculos';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,17 +35,17 @@ class ClienteMySqlDAO implements ClienteDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM cliente ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM vehiculos ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
 	
 	/**
  	 * Delete record from table
- 	 * @param cliente primary key
+ 	 * @param vehiculo primary key
  	 */
 	public function delete($id){
-		$sql = 'DELETE FROM cliente WHERE id = ?';
+		$sql = 'DELETE FROM vehiculos WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->executeUpdate($sqlQuery);
@@ -54,39 +54,39 @@ class ClienteMySqlDAO implements ClienteDAO{
 	/**
  	 * Insert record to table
  	 *
- 	 * @param ClienteMySql cliente
+ 	 * @param VehiculosMySql vehiculo
  	 */
-	public function insert($cliente){
-		$sql = 'INSERT INTO cliente (nombres, ciudad, sexo, telefono, fecha_nacimiento) VALUES (?, ?, ?, ?, ?)';
+	public function insert($vehiculo){
+		$sql = 'INSERT INTO vehiculos (matricula, fecha_fabricacion, marca, modelo, id_cliente) VALUES (?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($cliente->nombres);
-		$sqlQuery->set($cliente->ciudad);
-		$sqlQuery->set($cliente->sexo);
-		$sqlQuery->set($cliente->telefono);
-		$sqlQuery->set($cliente->fechaNacimiento);
+		$sqlQuery->set($vehiculo->matricula);
+		$sqlQuery->set($vehiculo->fechaFabricacion);
+		$sqlQuery->set($vehiculo->marca);
+		$sqlQuery->set($vehiculo->modelo);
+		$sqlQuery->setNumber($vehiculo->idCliente);
 
 		$id = $this->executeInsert($sqlQuery);	
-		$cliente->id = $id;
+		$vehiculo->id = $id;
 		return $id;
 	}
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param ClienteMySql cliente
+ 	 * @param VehiculosMySql vehiculo
  	 */
-	public function update($cliente){
-		$sql = 'UPDATE cliente SET nombres = ?, ciudad = ?, sexo = ?, telefono = ?, fecha_nacimiento = ? WHERE id = ?';
+	public function update($vehiculo){
+		$sql = 'UPDATE vehiculos SET matricula = ?, fecha_fabricacion = ?, marca = ?, modelo = ?, id_cliente = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->set($cliente->nombres);
-		$sqlQuery->set($cliente->ciudad);
-		$sqlQuery->set($cliente->sexo);
-		$sqlQuery->set($cliente->telefono);
-		$sqlQuery->set($cliente->fechaNacimiento);
+		$sqlQuery->set($vehiculo->matricula);
+		$sqlQuery->set($vehiculo->fechaFabricacion);
+		$sqlQuery->set($vehiculo->marca);
+		$sqlQuery->set($vehiculo->modelo);
+		$sqlQuery->setNumber($vehiculo->idCliente);
 
-		$sqlQuery->setNumber($cliente->id);
+		$sqlQuery->setNumber($vehiculo->id);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -94,79 +94,79 @@ class ClienteMySqlDAO implements ClienteDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM cliente';
+		$sql = 'DELETE FROM vehiculos';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function queryByNombres($value){
-		$sql = 'SELECT * FROM cliente WHERE nombres = ?';
+	public function queryByMatricula($value){
+		$sql = 'SELECT * FROM vehiculos WHERE matricula = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByCiudad($value){
-		$sql = 'SELECT * FROM cliente WHERE ciudad = ?';
+	public function queryByFechaFabricacion($value){
+		$sql = 'SELECT * FROM vehiculos WHERE fecha_fabricacion = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryBySexo($value){
-		$sql = 'SELECT * FROM cliente WHERE sexo = ?';
+	public function queryByMarca($value){
+		$sql = 'SELECT * FROM vehiculos WHERE marca = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByTelefono($value){
-		$sql = 'SELECT * FROM cliente WHERE telefono = ?';
+	public function queryByModelo($value){
+		$sql = 'SELECT * FROM vehiculos WHERE modelo = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByFechaNacimiento($value){
-		$sql = 'SELECT * FROM cliente WHERE fecha_nacimiento = ?';
+	public function queryByIdCliente($value){
+		$sql = 'SELECT * FROM vehiculos WHERE id_cliente = ?';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
+		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 
-	public function deleteByNombres($value){
-		$sql = 'DELETE FROM cliente WHERE nombres = ?';
+	public function deleteByMatricula($value){
+		$sql = 'DELETE FROM vehiculos WHERE matricula = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByCiudad($value){
-		$sql = 'DELETE FROM cliente WHERE ciudad = ?';
+	public function deleteByFechaFabricacion($value){
+		$sql = 'DELETE FROM vehiculos WHERE fecha_fabricacion = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteBySexo($value){
-		$sql = 'DELETE FROM cliente WHERE sexo = ?';
+	public function deleteByMarca($value){
+		$sql = 'DELETE FROM vehiculos WHERE marca = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByTelefono($value){
-		$sql = 'DELETE FROM cliente WHERE telefono = ?';
+	public function deleteByModelo($value){
+		$sql = 'DELETE FROM vehiculos WHERE modelo = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByFechaNacimiento($value){
-		$sql = 'DELETE FROM cliente WHERE fecha_nacimiento = ?';
+	public function deleteByIdCliente($value){
+		$sql = 'DELETE FROM vehiculos WHERE id_cliente = ?';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($value);
+		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -175,19 +175,19 @@ class ClienteMySqlDAO implements ClienteDAO{
 	/**
 	 * Read row
 	 *
-	 * @return ClienteMySql 
+	 * @return VehiculosMySql 
 	 */
 	protected function readRow($row){
-		$cliente = new Cliente();
+		$vehiculo = new Vehiculo();
 		
-		$cliente->id = $row['id'];
-		$cliente->nombres = $row['nombres'];
-		$cliente->ciudad = $row['ciudad'];
-		$cliente->sexo = $row['sexo'];
-		$cliente->telefono = $row['telefono'];
-		$cliente->fechaNacimiento = $row['fecha_nacimiento'];
+		$vehiculo->id = $row['id'];
+		$vehiculo->matricula = $row['matricula'];
+		$vehiculo->fechaFabricacion = $row['fecha_fabricacion'];
+		$vehiculo->marca = $row['marca'];
+		$vehiculo->modelo = $row['modelo'];
+		$vehiculo->idCliente = $row['id_cliente'];
 
-		return $cliente;
+		return $vehiculo;
 	}
 	
 	protected function getList($sqlQuery){
@@ -202,7 +202,7 @@ class ClienteMySqlDAO implements ClienteDAO{
 	/**
 	 * Get row
 	 *
-	 * @return ClienteMySql 
+	 * @return VehiculosMySql 
 	 */
 	protected function getRow($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);

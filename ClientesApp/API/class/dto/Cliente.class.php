@@ -3,7 +3,7 @@
 	 * Object represents table 'cliente'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2018-01-30 15:58	 
+     	 * @date: 2018-02-06 16:38	 
 	 */
 	class Cliente{
 		

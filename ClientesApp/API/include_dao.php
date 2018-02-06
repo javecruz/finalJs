@@ -13,5 +13,9 @@
 	require_once('class/dto/Cliente.class.php');
 	require_once('class/mysql/ClienteMySqlDAO.class.php');
 	require_once('class/mysql/ext/ClienteMySqlExtDAO.class.php');
+	require_once('class/dao/VehiculosDAO.class.php');
+	require_once('class/dto/Vehiculo.class.php');
+	require_once('class/mysql/VehiculosMySqlDAO.class.php');
+	require_once('class/mysql/ext/VehiculosMySqlExtDAO.class.php');
 
 ?>
