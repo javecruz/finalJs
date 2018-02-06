@@ -13,6 +13,8 @@ if(isset($_POST['submit'])){
 	$cliente->sexo = htmlspecialchars(trim($_POST['alternativas']));
 	$cliente->telefono = htmlspecialchars(trim($_POST['telefono']));
 	$cliente->fechaNacimiento = htmlspecialchars(trim($_POST['fecha_nacimiento']));
+	$cliente->provincia = htmlspecialchars(trim($_POST['provincia']));
+	$cliente->direccion = htmlspecialchars(trim($_POST['direccion']));
 
 	//start new transaction
 	$transaction = new Transaction();
