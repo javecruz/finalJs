@@ -138,6 +138,13 @@ $(document).ready(function(){
 	})
 
 
+	//evento para mostrar los coches
+	$(".datosTabla").on("click",".coches",function(){
+		var id = $(this).closest("tr").attr('class');
+		carList.getCars(id);
+	})
+
+
 
 	/*
 		transformar la fecha en  formato 2015-12-02 00:00:00 a 02/12/2015

@@ -3,7 +3,7 @@
  * Class that operate on table 'vehiculos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2018-02-06 16:38
+ * @date: 2018-02-11 18:12
  */
 class VehiculosMySqlDAO implements VehiculosDAO{
 
@@ -14,10 +14,11 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 	 * @return VehiculosMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM vehiculos WHERE id = ?';
+		$sql = 'SELECT * FROM vehiculos WHERE id_cliente = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
-		return $this->getRow($sqlQuery);
+		return $this->getList($sqlQuery);
+		// return $this->getRow($sqlQuery);
 	}
 
 	/**
@@ -57,7 +58,7 @@ class VehiculosMySqlDAO implements VehiculosDAO{
  	 * @param VehiculosMySql vehiculo
  	 */
 	public function insert($vehiculo){
-		$sql = 'INSERT INTO vehiculos (matricula, fecha_fabricacion, marca, modelo, id_cliente) VALUES (?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO vehiculos (matricula, fecha_fabricacion, marca, modelo, id_cliente, Tipo) VALUES (?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($vehiculo->matricula);
@@ -65,6 +66,7 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 		$sqlQuery->set($vehiculo->marca);
 		$sqlQuery->set($vehiculo->modelo);
 		$sqlQuery->setNumber($vehiculo->idCliente);
+		$sqlQuery->setNumber($vehiculo->tipo);
 
 		$id = $this->executeInsert($sqlQuery);	
 		$vehiculo->id = $id;
@@ -77,7 +79,7 @@ class VehiculosMySqlDAO implements VehiculosDAO{
  	 * @param VehiculosMySql vehiculo
  	 */
 	public function update($vehiculo){
-		$sql = 'UPDATE vehiculos SET matricula = ?, fecha_fabricacion = ?, marca = ?, modelo = ?, id_cliente = ? WHERE id = ?';
+		$sql = 'UPDATE vehiculos SET matricula = ?, fecha_fabricacion = ?, marca = ?, modelo = ?, id_cliente = ?, Tipo = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($vehiculo->matricula);
@@ -85,6 +87,7 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 		$sqlQuery->set($vehiculo->marca);
 		$sqlQuery->set($vehiculo->modelo);
 		$sqlQuery->setNumber($vehiculo->idCliente);
+		$sqlQuery->setNumber($vehiculo->tipo);
 
 		$sqlQuery->setNumber($vehiculo->id);
 		return $this->executeUpdate($sqlQuery);
@@ -134,6 +137,13 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByTipo($value){
+		$sql = 'SELECT * FROM vehiculos WHERE Tipo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByMatricula($value){
 		$sql = 'DELETE FROM vehiculos WHERE matricula = ?';
@@ -170,6 +180,13 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByTipo($value){
+		$sql = 'DELETE FROM vehiculos WHERE Tipo = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 
 	
 	/**
@@ -186,6 +203,7 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 		$vehiculo->marca = $row['marca'];
 		$vehiculo->modelo = $row['modelo'];
 		$vehiculo->idCliente = $row['id_cliente'];
+		$vehiculo->tipo = $row['Tipo'];
 
 		return $vehiculo;
 	}

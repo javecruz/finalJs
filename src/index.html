@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/index.css">
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
     <title>Practica Final</title>
@@ -14,22 +15,30 @@
 
 <body>
     <div class="container">
+      
         <div class="row">
             <div class="col-12">
                 <h1 class="display-1 mt-5 text-center">EMPRESA</h1>
             </div>
         </div>
+
         <div class="row">
             
+
+            <!-- TABLA -->
             <div class="col-12 datosTabla">
 
                   
             </div>
-
+            
+            <!-- Modal Cliente -->
             <div class="col-12">
                 <div class="modal-container">
                 </div>
             </div>
+            
+
+            <!-- Modal Mapa Cliente -->
             <div class="col-12">
                 <div class="modal-map-container">
                     <div class="modal" id="modalMap" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -49,6 +58,68 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Modal Coches -->
+            <div class="col-12">
+                <div class="modal-coches-container">
+                    <!-- <div class="modal" id="modalCoches" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog moreWidth" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title text-center" id="exampleModalLabel">Coches del Usuario</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    
+                                    <i class="fas fa-plus-circle nuevo-coche"></i>
+                                    <table class="table tabla-Coches">
+                                      <thead>
+                                        <tr>
+                                          <th class="text-center">#</th>
+                                          <th class="text-center">Tipo</th>
+                                          <th class="text-center">Marca</th>
+                                          <th class="text-center">Modelo</th>
+                                          <th class="text-center">Matrícula</th>
+                                          <th class="text-center">Fecha Fabricación</th>
+                                          <th class="text-center">Editar</th>
+                                          <th class="text-center">Borrar</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        <tr>
+                                          <th scope="row" class="text-center">1</th>
+                                          <td class="text-center"><input type="text" value="Coche" disabled></td>
+                                          <td class="text-center"><input type="text" value="Ford" disabled></td>
+                                          <td class="text-center"><input type="text" value="Escort" disabled></td>
+                                          <td class="text-center"><input type="text" value="3123-HJ" disabled></td>
+                                          <td class="text-center"><input type="date" value="2018-02-08" disabled></td>
+                                          <td class="text-center"><i class="fas fa-edit editar-coche"></i></td>
+                                          <td class="text-center"><i class="fas fa-trash-alt borrar-coche"></i></td>                                          
+                                        </tr>
+                                        <tr>
+                                          <th scope="row" class="text-center">2</th>
+                                          <td class="text-center"><input type="text" value="Camion" disabled></td>
+                                          <td class="text-center"><input type="text" value="Escania" disabled></td>
+                                          <td class="text-center"><input type="text" value="Burg" disabled></td>
+                                          <td class="text-center"><input type="text" value="AAAA-HJ" disabled></td>
+                                          <td class="text-center"><input type="date" value="2003-02-08" disabled></td>
+                                          <td class="text-center"><i class="fas fa-edit editar-coche"></i></td>
+                                          <td class="text-center"><i class="fas fa-trash-alt borrar-coche"></i></td>       
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                                                        
+
+                                </div>
+                            </div>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+    
+
         </div>
     </div>
     <script>
@@ -74,12 +145,16 @@
     <script src="lib/bootstrap.min.js"></script>
     <script src="templates/js/renderTable.js"></script>
     <script src="templates/js/modal.js"></script>
+    <script src="templates/js/renderCarsTable.js"></script>
     <script src="js/config.js"></script>
     <script src="js/events.js"></script>
     <script src="js/client.js"></script>
     <script src="js/clientView.js"></script>
     <script src="js/clientList.js"></script>
     <script src="js/clientListView.js"></script>
+    <script src="js/car.js"></script>
+    <script src="js/carList.js"></script>
+    <script src="js/carListView.js"></script>
     <script src="js/main.js"></script>
     <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDMAvzeTh-Y79QJ4xejgBwpIzZBGQFidSA&callback=initMap"></script>
 </body>

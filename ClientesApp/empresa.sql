@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.4.14
--- http://www.phpmyadmin.net
+-- version 4.6.5.2
+-- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-02-2018 a las 16:33:53
--- Versión del servidor: 5.6.26
--- Versión de PHP: 5.6.12
+-- Tiempo de generación: 11-02-2018 a las 18:07:40
+-- Versión del servidor: 10.1.21-MariaDB
+-- Versión de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cliente`
 --
 
-CREATE TABLE IF NOT EXISTS `cliente` (
+CREATE TABLE `cliente` (
   `id` tinyint(7) NOT NULL,
   `nombres` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ciudad` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -39,11 +39,20 @@ CREATE TABLE IF NOT EXISTS `cliente` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
+-- Volcado de datos para la tabla `cliente`
+--
+
+INSERT INTO `cliente` (`id`, `nombres`, `ciudad`, `sexo`, `telefono`, `fecha_nacimiento`, `direccion`, `provincia`, `fechaAlta`) VALUES
+(1, 'Javier', 'Valencia', 'M', '555444777', '2018-02-08 00:00:00', 'Esteban Dolz del Castellar', 'Valencia', '2018-02-11 13:34:35'),
+(2, 'Pepe', 'Madrid', 'M', '111237713', '2018-02-08 00:00:00', 'Avenida Peset Aleixandre', 'Valencai', '2018-02-11 13:34:54'),
+(3, 'Jorgee', 'Castellon', 'M', '555555555', '2018-02-01 00:00:00', 'Calle las nenas', 'Valencia', '2018-02-11 13:38:07'),
+(4, 'Paca', 'Barcelona', 'M', '666555444', '2018-02-15 00:00:00', 'Avenida Diagonal', 'Barcelona', '2018-02-11 13:39:55');
+
+--
 -- Disparadores `cliente`
 --
 DELIMITER $$
-CREATE TRIGGER `setFechaAlta` BEFORE INSERT ON `cliente`
- FOR EACH ROW BEGIN
+CREATE TRIGGER `setFechaAlta` BEFORE INSERT ON `cliente` FOR EACH ROW BEGIN
     SET NEW.fechaAlta = NOW();
 END
 $$
@@ -55,14 +64,25 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `vehiculos`
 --
 
-CREATE TABLE IF NOT EXISTS `vehiculos` (
+CREATE TABLE `vehiculos` (
   `id` int(11) NOT NULL,
   `matricula` varchar(20) NOT NULL,
   `fecha_fabricacion` datetime NOT NULL,
   `marca` varchar(55) NOT NULL,
   `modelo` varchar(50) NOT NULL,
-  `id_cliente` tinyint(7) NOT NULL
+  `id_cliente` tinyint(7) NOT NULL,
+  `Tipo` tinyint(7) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `vehiculos`
+--
+
+INSERT INTO `vehiculos` (`id`, `matricula`, `fecha_fabricacion`, `marca`, `modelo`, `id_cliente`, `Tipo`) VALUES
+(1, '44454', '2018-02-08 00:00:00', 'Ford', 'Focus', 1, 1),
+(2, '66666', '2018-02-21 00:00:00', 'Seat', 'Toledo', 1, 3),
+(3, '435', '2018-02-08 00:00:00', 'Forgdfgd', 'Focssus', 3, 2),
+(4, '6456', '2018-02-21 00:00:00', 'Seasdat', 'Tolsadedo', 2, 4);
 
 --
 -- Índices para tablas volcadas
@@ -90,12 +110,12 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` tinyint(7) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` tinyint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- Restricciones para tablas volcadas
 --

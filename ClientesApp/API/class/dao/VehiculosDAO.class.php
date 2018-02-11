@@ -3,7 +3,7 @@
  * Intreface DAO
  *
  * @author: http://phpdao.com
- * @date: 2018-02-06 16:38
+ * @date: 2018-02-11 18:12
  */
 interface VehiculosDAO{
 
@@ -61,6 +61,8 @@ interface VehiculosDAO{
 
 	public function queryByIdCliente($value);
 
+	public function queryByTipo($value);
+
 
 	public function deleteByMatricula($value);
 
@@ -71,6 +73,8 @@ interface VehiculosDAO{
 	public function deleteByModelo($value);
 
 	public function deleteByIdCliente($value);
+
+	public function deleteByTipo($value);
 
 
 }

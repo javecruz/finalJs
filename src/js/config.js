@@ -1,5 +1,5 @@
 var config = (function(){
-	var url = "http://localhost/ClientesApp/API/";
+	var url = "http://localhost/finalJs/ClientesApp/API/";
 	var googleGeocodingApiKey = "AIzaSyDMAvzeTh-Y79QJ4xejgBwpIzZBGQFidSA";
 	return{
 		url:url,
