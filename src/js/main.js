@@ -144,7 +144,123 @@ $(document).ready(function(){
 		carList.getCars(id);
 	})
 
+	//editar coche
+	$(".modal-coches-container").on("click",".editar-coche",function(){
+		var tr = $(this).closest("tr");
+		tr.find("input").each(function(){
+			$(this).prop("disabled",false)
+		})
 
+		// oculto boton editar del tr en concreto y muestro el boton de confirmar
+		tr.find(".editar-coche").addClass("d-none");
+		tr.find(".confirmar-editar-coche").removeClass("d-none");
+
+		//muestra select en tipo y oculta el otro input
+		tr.find("input").eq(0).addClass("d-none");
+		tr.find("select").eq(0).removeClass("d-none");	
+	})
+
+	//confirmar edicion del coche
+	$(".modal-coches-container").on("click",".confirmar-editar-coche",function(){
+		var tr = $(this).closest("tr");
+		tr.find("input").each(function(){
+			$(this).prop("disabled",true)
+		})
+
+		//hacer la llamada a la api para insertar el coche modificado
+		var idCoche =  tr.attr("data-id");
+		var idCliente = $(".tabla-Coches").attr("data-id-cliente");
+		var tipo = tr.find("select").eq(0).val();
+		var marca = tr.find("input").eq(1).val();
+		var modelo = tr.find("input").eq(2).val();
+		var matricula = tr.find("input").eq(3).val();
+		var fechaFabricacion = tr.find("input").eq(4).val()  + " 00:00:00";
+
+		var data = {
+			idCoche:idCoche,
+			idCliente:idCliente,
+			tipo:tipo,
+			marca:marca,
+			modelo:modelo,
+			matricula:matricula,
+			fechaFabricacion:fechaFabricacion
+		}
+
+		carList.update(data);
+
+		tr.find("input").eq(0).val(tr.find("select option:selected").eq(0).text()); // setea el input
+		tr.find("input").eq(0).removeClass("d-none");
+		tr.find("select").eq(0).addClass("d-none");
+		tr.find(".confirmar-editar-coche").addClass("d-none");
+		tr.find(".editar-coche").removeClass("d-none");
+	})
+
+
+
+
+	//evento insertar nuevo coche
+	$(".modal-coches-container").on("click",".nuevo-coche", function(){
+
+		var num = $(".tabla-Coches").find("tr").last().find("th").eq(0).html() * 1 + 1; // es para poner el siguiente numero en la plantilla
+		var data = {
+			num:num
+		}
+		//llamar plantilla de nuevo coche
+		var html = Handlebars.templates.renderNuevoCoche(data);
+		$(".tabla-Coches").append(html);
+
+		$(".nuevo-coche").addClass("d-none");
+
+	})
+
+
+	//evento confirmar nuevo coche
+
+	$(".modal-coches-container").on("click",".confirmar-nuevo-coche",function(){
+
+		var tr = $(this).closest("tr");
+
+		var idCliente = $(".tabla-Coches").attr("data-id-cliente");
+		var tipo = tr.find("select").eq(0).val();
+		var marca = tr.find("input").eq(1).val();
+		var modelo = tr.find("input").eq(2).val();
+		var matricula = tr.find("input").eq(3).val();
+		var fechaFabricacion = tr.find("input").eq(4).val()  + " 00:00:00";
+
+		var data = {
+			matricula:matricula,
+			fechaFabricacion:fechaFabricacion,
+			marca:marca,
+			modelo:modelo,
+			idCliente:idCliente,
+			tipo:tipo
+		}
+
+		// pongo en hidden el confirmar nuevo y muestro el de edit y nuevo
+		tr.find(".confirmar-nuevo-coche").addClass("d-none");
+		tr.find(".editar-coche").removeClass("d-none");
+		$(".nuevo-coche").removeClass("d-none");
+
+		//pongo en disabled los inputs y quito select y muestro input de tipo
+		tr.find("input").eq(0).val(tr.find("select option:selected").eq(0).text()); // setea el input
+		tr.find("input").eq(0).removeClass("d-none");
+		tr.find("select").eq(0).addClass("d-none");
+		tr.find("input").each(function(){
+			$(this).prop("disabled",true)
+		})
+
+		//api call
+		carList.newCar(data);
+	})
+
+	//event delete car
+
+	$(".modal-coches-container").on("click",".borrar-coche",function(){
+		var carId = $(this).closest("tr").attr("data-id") * 1
+
+		//delete car
+		carList.deleteCar(carId);
+	})
 
 	/*
 		transformar la fecha en  formato 2015-12-02 00:00:00 a 02/12/2015

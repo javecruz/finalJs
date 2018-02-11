@@ -9,7 +9,7 @@ require_once('include_dao.php');
 	//obtain clienteDAOFactory
 	$VehiculoDAO=DAOFactory::getVehiculosDAO();
 	//obtain clientes
-	$coches=$VehiculoDAO->load($_POST['idCliente']);
+	$coches=$VehiculoDAO->queryByIdCliente($_POST['idCliente']);
 	//commit transaction
 	$transaction->commit();
 

@@ -1,51 +1,60 @@
 <div class="modal" id="modalCoches" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog moreWidth" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title text-center" id="exampleModalLabel">Coches del Usuario</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    
-                                    <i class="fas fa-plus-circle nuevo-coche"></i>
-                                    <table class="table tabla-Coches">
-                                      <thead>
-                                        <tr>
-                                          <th class="text-center">#</th>
-                                          <th class="text-center">Tipo</th>
-                                          <th class="text-center">Marca</th>
-                                          <th class="text-center">Modelo</th>
-                                          <th class="text-center">Matrícula</th>
-                                          <th class="text-center">Fecha Fabricación</th>
-                                          <th class="text-center">Editar</th>
-                                          <th class="text-center">Borrar</th>
-                                        </tr>
-                                      </thead>
-                                      <tbody>
+  <div class="modal-dialog moreWidth" role="document">
+    <div class="modal-content">
 
-                                        {{#each this}}
-                                        <tr data-id="{{id}}">                                        
-                                          <th scope="row" class="text-center">{{@index}}</th>
-                                          <td class="text-center"><input type="text" value="{{tipo}}" disabled></td>
-                                          <td class="text-center"><input type="text" value="{{marca}}" disabled></td>
-                                          <td class="text-center"><input type="text" value="{{modelo}}" disabled></td>
-                                          <td class="text-center"><input type="text" value="{{matricula}}" disabled></td>
-                                          <td class="text-center"><input type="date" value="{{setDateOnInput fecha_fabricacion}}" disabled></td>
-                                          <td class="text-center"><i class="fas fa-edit editar-coche"></i></td>
-                                          <td class="text-center"><i class="fas fa-trash-alt borrar-coche"></i></td>                                        
-                                        </tr>
-                                        {{/each}}
+      <div class="modal-header">
+          <h5 class="modal-title text-center" id="exampleModalLabel">Coches del Usuario  : {{nombre}}</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+          </button>
+      </div>
 
-                                      </tbody>
-                                    </table>
-                                                                        
+      <div class="modal-body">
+          
+        <i class="fas fa-plus-circle nuevo-coche"></i>
+        <table class="table tabla-Coches" data-id-cliente="{{id_cliente}}">
+          <thead>
+            <tr>
+              <th class="text-center">#</th>
+              <th class="text-center">Tipo</th>
+              <th class="text-center">Marca</th>
+              <th class="text-center">Modelo</th>
+              <th class="text-center">Matrícula</th>
+              <th class="text-center">Fecha Fabricación</th>
+              <th class="text-center">Editar</th>
+              <th class="text-center">Borrar</th>
+            </tr>
+          </thead>
+          <tbody>
 
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            {{#each coches}}
+            <tr data-id="{{id}}">                                        
+              <th scope="row" class="text-center">{{@index}}</th>
+              <td class="text-center">
+                <input class="text-center" type="text" value="{{tipo}}" disabled>
+                <select class="select-tipo-coche text-center d-none">
+                  <option class="text-center" value="1">Coche</option>
+                  <option class="text-center" value="2">Moto</option>
+                  <option class="text-center" value="3">Camion</option>
+                  <option class="text-center" value="4">Furgoneta</option>
+                </select>
+              </td>
+              <td class="text-center"><input class="text-center" type="text" value="{{marca}}" disabled></td>
+              <td class="text-center"><input class="text-center" type="text" value="{{modelo}}" disabled></td>
+              <td class="text-center"><input class="text-center" type="text" value="{{matricula}}" disabled></td>
+              <td class="text-center"><input class="text-center" type="date" value="{{setDateOnInput fecha_fabricacion}}" disabled></td>
+              <td class="text-center"><i class="fas fa-edit editar-coche"></i><i class="fas fa-check-circle confirmar-editar-coche d-none"></i></td>
+              <td class="text-center"><i class="fas fa-trash-alt borrar-coche"></i></td>                                        
+            </tr>
+            {{/each}}
+
+          </tbody>
+        </table>
+                                  
+      </div>
+    </div>
+  </div>
+</div>
 
 
 

@@ -14,10 +14,10 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 	 * @return VehiculosMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM vehiculos WHERE id_cliente = ?';
+		$sql = 'SELECT * FROM vehiculos WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
-		return $this->getList($sqlQuery);
+		return $this->getRow($sqlQuery);
 		// return $this->getRow($sqlQuery);
 	}
 

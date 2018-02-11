@@ -23,7 +23,7 @@ templates['renderTable'] = template({"1":function(container,depth0,helpers,parti
     + alias4(((helper = (helper = helpers.provincia || (depth0 != null ? depth0.provincia : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"provincia","hash":{},"data":data}) : helper)))
     + "</td>\r\n					<td class=\"text-center\">"
     + alias4(((helper = (helper = helpers.fechaAlta || (depth0 != null ? depth0.fechaAlta : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"fechaAlta","hash":{},"data":data}) : helper)))
-    + "</td>\r\n					<td class=\"text-center\"><i class=\"fas fa-edit editar\" data-toggle=\"modal\" data-target=\"#exampleModal\"></i></td>\r\n					<td class=\"text-center\"><i class=\"fas fa-trash-alt borrar\"></i></td>\r\n					<td class=\"text-center\"><i class=\"fas fa-globe mapa\" data-toggle=\"modal\" data-target=\"#modalMap\"></i></td>\r\n                    <td class=\"text-center\"><i class=\"fas fa-car coches\" data-toggle=\"modal\" data-target=\"#modalCoches\"></i></td>\r\n				</tr>\r\n";
+    + "</td>\r\n					<td class=\"text-center\"><i class=\"fas fa-edit editar\" data-toggle=\"modal\" data-target=\"#exampleModal\"></i></td>\r\n					<td class=\"text-center\"><i class=\"fas fa-trash-alt borrar\"></i></td>\r\n					<td class=\"text-center\"><i class=\"fas fa-globe mapa\" data-toggle=\"modal\" data-target=\"#modalMap\"></i></td>\r\n                    <td class=\"text-center\"><i class=\"fas fa-car coches\"></i></td>\r\n				</tr>\r\n";
 },"3":function(container,depth0,helpers,partials,data) {
     var helper, alias1=depth0 != null ? depth0 : (container.nullContext || {}), alias2=helpers.helperMissing, alias3="function", alias4=container.escapeExpression;
 
