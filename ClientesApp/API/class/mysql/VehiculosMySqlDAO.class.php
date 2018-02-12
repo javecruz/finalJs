@@ -3,7 +3,7 @@
  * Class that operate on table 'vehiculos'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2018-02-11 18:12
+ * @date: 2018-02-12 12:03
  */
 class VehiculosMySqlDAO implements VehiculosDAO{
 
@@ -18,7 +18,6 @@ class VehiculosMySqlDAO implements VehiculosDAO{
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
-		// return $this->getRow($sqlQuery);
 	}
 
 	/**

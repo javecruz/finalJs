@@ -262,6 +262,24 @@ $(document).ready(function(){
 		carList.deleteCar(carId);
 	})
 
+
+
+	// evento para mostrar ficheros de coche
+	$(".modal-coches-container").on("click",".ficheros", function(){
+		var carId = $(this).closest("tr").attr("data-id") * 1
+		fileList.getFiles(carId);
+	})
+
+
+	//evento para descargar ficheros
+	$(".modal-coches-container").on("click","#upload",function(){
+		var carId = $(this).closest("div").attr("data-cards-car-id") * 1
+		// ya tengo el id del coche
+		// falta meter inputs para desplegar lo de upload, e inputs para meter el tipo y nombre
+	})
+
+
+
 	/*
 		transformar la fecha en  formato 2015-12-02 00:00:00 a 02/12/2015
 	*/

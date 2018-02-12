@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 11-02-2018 a las 18:07:40
+-- Tiempo de generación: 12-02-2018 a las 12:02:26
 -- Versión del servidor: 10.1.21-MariaDB
 -- Versión de PHP: 5.6.30
 
@@ -61,6 +61,29 @@ DELIMITER ;
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `ficheros`
+--
+
+CREATE TABLE `ficheros` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(150) NOT NULL,
+  `tipo` varchar(55) NOT NULL,
+  `id_Vehiculo` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `ficheros`
+--
+
+INSERT INTO `ficheros` (`id`, `nombre`, `tipo`, `id_Vehiculo`) VALUES
+(1, 'facturaFord-123123.pdf', 'Factura', 1),
+(2, 'SCAnia-123123.pdf', 'Baja', 1),
+(3, 'oooooo-123123.pdf', 'Factura', 2),
+(4, 'fffff-123123.pdf', 'Contrato', 5);
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `vehiculos`
 --
 
@@ -79,10 +102,13 @@ CREATE TABLE `vehiculos` (
 --
 
 INSERT INTO `vehiculos` (`id`, `matricula`, `fecha_fabricacion`, `marca`, `modelo`, `id_cliente`, `Tipo`) VALUES
-(1, '44454', '2018-02-08 00:00:00', 'Ford', 'Focus', 1, 1),
+(1, '1111', '1111-11-11 00:00:00', 'Ford', 'Focussss', 1, 1),
 (2, '66666', '2018-02-21 00:00:00', 'Seat', 'Toledo', 1, 3),
 (3, '435', '2018-02-08 00:00:00', 'Forgdfgd', 'Focssus', 3, 2),
-(4, '6456', '2018-02-21 00:00:00', 'Seasdat', 'Tolsadedo', 2, 4);
+(4, '6456', '2018-02-21 00:00:00', 'Seasdat', 'Tolsadedo', 2, 4),
+(5, 'zzzzz', '2018-02-08 00:00:00', 'Jackson', 'Tres', 1, 4),
+(6, 'tttt', '2018-02-07 00:00:00', 'gggg', 'jjjj', 4, 3),
+(9, 'sadasd', '2018-02-12 00:00:00', 'adsad', 'asdasd', 1, 2);
 
 --
 -- Índices para tablas volcadas
@@ -94,6 +120,13 @@ INSERT INTO `vehiculos` (`id`, `matricula`, `fecha_fabricacion`, `marca`, `model
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id`),
   ADD KEY `id` (`id`);
+
+--
+-- Indices de la tabla `ficheros`
+--
+ALTER TABLE `ficheros`
+  ADD PRIMARY KEY (`id`),
+  ADD KEY `cascade` (`id_Vehiculo`);
 
 --
 -- Indices de la tabla `vehiculos`
@@ -112,13 +145,24 @@ ALTER TABLE `vehiculos`
 ALTER TABLE `cliente`
   MODIFY `id` tinyint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
+-- AUTO_INCREMENT de la tabla `ficheros`
+--
+ALTER TABLE `ficheros`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+--
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 --
 -- Restricciones para tablas volcadas
 --
+
+--
+-- Filtros para la tabla `ficheros`
+--
+ALTER TABLE `ficheros`
+  ADD CONSTRAINT `cascade` FOREIGN KEY (`id_Vehiculo`) REFERENCES `vehiculos` (`id`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `vehiculos`

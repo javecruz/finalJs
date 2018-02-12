@@ -3,7 +3,7 @@
 	 * Object represents table 'vehiculos'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2018-02-11 18:12	 
+     	 * @date: 2018-02-12 12:03	 
 	 */
 	class Vehiculo{
 		

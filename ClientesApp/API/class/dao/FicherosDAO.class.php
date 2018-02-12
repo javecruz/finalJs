@@ -5,13 +5,13 @@
  * @author: http://phpdao.com
  * @date: 2018-02-12 12:03
  */
-interface VehiculosDAO{
+interface FicherosDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @Return Vehiculos 
+	 * @Return Ficheros 
 	 */
 	public function load($id);
 
@@ -28,53 +28,41 @@ interface VehiculosDAO{
 	
 	/**
  	 * Delete record from table
- 	 * @param vehiculo primary key
+ 	 * @param fichero primary key
  	 */
 	public function delete($id);
 	
 	/**
  	 * Insert record to table
  	 *
- 	 * @param Vehiculos vehiculo
+ 	 * @param Ficheros fichero
  	 */
-	public function insert($vehiculo);
+	public function insert($fichero);
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param Vehiculos vehiculo
+ 	 * @param Ficheros fichero
  	 */
-	public function update($vehiculo);	
+	public function update($fichero);	
 
 	/**
 	 * Delete all rows
 	 */
 	public function clean();
 
-	public function queryByMatricula($value);
-
-	public function queryByFechaFabricacion($value);
-
-	public function queryByMarca($value);
-
-	public function queryByModelo($value);
-
-	public function queryByIdCliente($value);
+	public function queryByNombre($value);
 
 	public function queryByTipo($value);
 
+	public function queryByIdVehiculo($value);
 
-	public function deleteByMatricula($value);
 
-	public function deleteByFechaFabricacion($value);
-
-	public function deleteByMarca($value);
-
-	public function deleteByModelo($value);
-
-	public function deleteByIdCliente($value);
+	public function deleteByNombre($value);
 
 	public function deleteByTipo($value);
+
+	public function deleteByIdVehiculo($value);
 
 
 }

@@ -15,6 +15,13 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return FicherosDAO
+	 */
+	public static function getFicherosDAO(){
+		return new FicherosMySqlExtDAO();
+	}
+
+	/**
 	 * @return VehiculosDAO
 	 */
 	public static function getVehiculosDAO(){

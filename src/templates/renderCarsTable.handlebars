@@ -23,12 +23,14 @@
               <th class="text-center">Fecha Fabricación</th>
               <th class="text-center">Editar</th>
               <th class="text-center">Borrar</th>
+              <th class="text-center">Ficheros</th>
             </tr>
           </thead>
           <tbody>
 
             {{#each coches}}
-            <tr data-id="{{id}}">                                        
+            <tr data-id="{{id}}">  
+
               <th scope="row" class="text-center">{{@index}}</th>
               <td class="text-center">
                 <input class="text-center" type="text" value="{{tipo}}" disabled>
@@ -44,7 +46,9 @@
               <td class="text-center"><input class="text-center" type="text" value="{{matricula}}" disabled></td>
               <td class="text-center"><input class="text-center" type="date" value="{{setDateOnInput fecha_fabricacion}}" disabled></td>
               <td class="text-center"><i class="fas fa-edit editar-coche"></i><i class="fas fa-check-circle confirmar-editar-coche d-none"></i></td>
-              <td class="text-center"><i class="fas fa-trash-alt borrar-coche"></i></td>                                        
+              <td class="text-center"><i class="fas fa-trash-alt borrar-coche"></i></td>
+              <td class="text-center"><i class="fas fa-file-pdf ficheros"></i></td>
+
             </tr>
             {{/each}}
 
