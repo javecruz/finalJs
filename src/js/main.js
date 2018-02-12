@@ -270,13 +270,60 @@ $(document).ready(function(){
 		fileList.getFiles(carId);
 	})
 
-
-	//evento para descargar ficheros
-	$(".modal-coches-container").on("click","#upload",function(){
-		var carId = $(this).closest("div").attr("data-cards-car-id") * 1
-		// ya tengo el id del coche
-		// falta meter inputs para desplegar lo de upload, e inputs para meter el tipo y nombre
+	//evento para mostrar formulario de subida fichero
+	$(".modal-coches-container").on("click",".subir-fichero-form",function(){
+		$(".container-form-new-file").removeClass("d-none");
+		$(this).addClass("d-none");
 	})
+
+
+
+	//evento para subir ficheros
+	$(".modal-coches-container").on("click","#upload",function(){
+
+		//vuelvo mostrar el icono que despliega el form para añadir fichero
+		$(".subir-fichero-form").removeClass("d-none");
+
+
+		var carId = $(this).parent().parent().attr("data-cards-car-id") * 1;
+		var tipo = $(this).parent().find("select").eq(0).val();
+		var nombre = "";
+		//empiezo el ajax de subida de fichero
+		$("#myFile").upload("http://localhost/finalJs/ClientesApp/API/subirFile.php",function(data){
+
+			if(data.ok != undefined){
+				console.log("done Archivo Subido");
+
+			var nombre = data.nombreFichero;
+			var info = {
+				carId:carId,
+				tipo:tipo,
+				nombre:nombre
+			}
+
+				//aqui hacer una llamada ajax para insertar el fichero
+				fileList.newFile(info);
+		}else{
+			console.log("error en la subida del fichero");
+		}
+			
+
+		},function(prog,value){
+			$("#prog").val(value);
+		})
+		
+
+		
+	})
+
+
+	//evento para eliminar ficheros
+	$(".modal-coches-container").on("click",".eliminarFichero",function(){
+		var fileId = $(this).parent().parent().attr("data-file-id") * 1;
+		var carId = $(this).parent().parent().parent().attr("data-cards-car-id") * 1;
+		fileList.deleteFile(fileId,carId);
+	})
+
 
 
 

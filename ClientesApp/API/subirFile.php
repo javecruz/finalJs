@@ -3,7 +3,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers:Origin,X-Requested-With, Content-Type, Accept");
 
 
-
+	
 	if(is_uploaded_file($_FILES['myFile']['tmp_name'])){
 
 		$nombreDirectorio = "uploadedFiles/";
@@ -11,8 +11,12 @@ header("Access-Control-Allow-Headers:Origin,X-Requested-With, Content-Type, Acce
 
 		if(is_dir($nombreDirectorio)){
 			move_uploaded_file($_FILES['myFile']['tmp_name'], $nombreFicheroFinal);
-			 echo $nombreFicheroFinal;
-			// echo "<br><img src='images/$nombreFicheroFinal' alt='$nombreFicheroFinal'>";
+			
+			echo json_encode(array("ok"=>"Correcto","nombreFichero"=>substr_replace($_FILES['myFile']['name'],'-'.time(),strpos($_FILES['myFile']['name'],'.'),0)),JSON_FORCE_OBJECT);
+			
+			// aqui deberia hacer la inserción en la BBDD del fichero
+
+
 		}else{
 			echo "<br>Error en directorio";
 		}

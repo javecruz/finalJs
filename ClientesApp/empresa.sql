@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.6.5.2
--- https://www.phpmyadmin.net/
+-- version 4.4.14
+-- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 12-02-2018 a las 13:33:16
--- Versión del servidor: 10.1.21-MariaDB
--- Versión de PHP: 5.6.30
+-- Tiempo de generación: 12-02-2018 a las 17:56:41
+-- Versión del servidor: 5.6.26
+-- Versión de PHP: 5.6.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `cliente`
 --
 
-CREATE TABLE `cliente` (
+CREATE TABLE IF NOT EXISTS `cliente` (
   `id` tinyint(7) NOT NULL,
   `nombres` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `ciudad` varchar(50) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
@@ -36,7 +36,7 @@ CREATE TABLE `cliente` (
   `direccion` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `provincia` varchar(100) CHARACTER SET utf8 COLLATE utf8_unicode_ci NOT NULL,
   `fechaAlta` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `cliente`
@@ -52,7 +52,8 @@ INSERT INTO `cliente` (`id`, `nombres`, `ciudad`, `sexo`, `telefono`, `fecha_nac
 -- Disparadores `cliente`
 --
 DELIMITER $$
-CREATE TRIGGER `setFechaAlta` BEFORE INSERT ON `cliente` FOR EACH ROW BEGIN
+CREATE TRIGGER `setFechaAlta` BEFORE INSERT ON `cliente`
+ FOR EACH ROW BEGIN
     SET NEW.fechaAlta = NOW();
 END
 $$
@@ -64,12 +65,12 @@ DELIMITER ;
 -- Estructura de tabla para la tabla `ficheros`
 --
 
-CREATE TABLE `ficheros` (
+CREATE TABLE IF NOT EXISTS `ficheros` (
   `id` int(11) NOT NULL,
   `nombre` varchar(150) NOT NULL,
   `tipo` varchar(55) NOT NULL,
   `id_Vehiculo` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `ficheros`
@@ -79,7 +80,12 @@ INSERT INTO `ficheros` (`id`, `nombre`, `tipo`, `id_Vehiculo`) VALUES
 (1, 'facturaFord-123123.pdf', 'Factura', 1),
 (2, 'SCAnia-123123.pdf', 'Baja', 1),
 (3, 'oooooo-123123.pdf', 'Factura', 2),
-(4, 'fffff-123123.pdf', 'Contrato', 5);
+(4, 'fffff-123123.pdf', 'Contrato', 5),
+(12, 'Fundamentos_de_jQuery-1518450856.pdf', 'Alta', 5),
+(13, 'avionacoo-1518451218.jpg', 'Baja', 3),
+(15, 'Fundamentos_de_jQuery-1518450856-1518452937.pdf', 'Baja', 5),
+(16, '55Learning  Javascript Design Patterns-1518453115.pdf', 'Seguro', 10),
+(17, 'Fundamentos_de_jQuery-1518454452.pdf', 'Incidencia', 11);
 
 -- --------------------------------------------------------
 
@@ -87,7 +93,7 @@ INSERT INTO `ficheros` (`id`, `nombre`, `tipo`, `id_Vehiculo`) VALUES
 -- Estructura de tabla para la tabla `vehiculos`
 --
 
-CREATE TABLE `vehiculos` (
+CREATE TABLE IF NOT EXISTS `vehiculos` (
   `id` int(11) NOT NULL,
   `matricula` varchar(20) NOT NULL,
   `fecha_fabricacion` datetime NOT NULL,
@@ -95,20 +101,22 @@ CREATE TABLE `vehiculos` (
   `modelo` varchar(50) NOT NULL,
   `id_cliente` tinyint(7) NOT NULL,
   `Tipo` tinyint(7) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `vehiculos`
 --
 
 INSERT INTO `vehiculos` (`id`, `matricula`, `fecha_fabricacion`, `marca`, `modelo`, `id_cliente`, `Tipo`) VALUES
-(1, '1111', '1111-11-11 00:00:00', 'Ford', 'Focussss', 1, 1),
+(1, '1111', '1111-11-11 00:00:00', 'Ford', 'Focussss', 1, 4),
 (2, '66666', '2018-02-21 00:00:00', 'Seat', 'Toledo', 1, 3),
 (3, '435', '2018-02-08 00:00:00', 'Forgdfgd', 'Focssus', 3, 2),
 (4, '6456', '2018-02-21 00:00:00', 'Seasdat', 'Tolsadedo', 2, 4),
 (5, 'zzzzz', '2018-02-08 00:00:00', 'Jackson', 'Tres', 1, 4),
 (6, 'tttt', '2018-02-07 00:00:00', 'gggg', 'jjjj', 4, 3),
-(9, 'sadasd', '2018-02-12 00:00:00', 'adsad', 'asdasd', 1, 2);
+(9, 'sadasd', '2018-02-12 00:00:00', 'adsad', 'asdasd', 1, 2),
+(10, 'dfdsf', '2018-02-09 00:00:00', 'fdvdcfg', 'sfdf', 1, 2),
+(11, '777j', '2018-02-07 00:00:00', 'Ford', 'Tres', 3, 3);
 
 --
 -- Índices para tablas volcadas
@@ -143,17 +151,17 @@ ALTER TABLE `vehiculos`
 -- AUTO_INCREMENT de la tabla `cliente`
 --
 ALTER TABLE `cliente`
-  MODIFY `id` tinyint(7) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` tinyint(7) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `ficheros`
 --
 ALTER TABLE `ficheros`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
 --
 -- AUTO_INCREMENT de la tabla `vehiculos`
 --
 ALTER TABLE `vehiculos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
 --
 -- Restricciones para tablas volcadas
 --

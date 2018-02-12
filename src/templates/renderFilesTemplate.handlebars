@@ -1,9 +1,25 @@
 
 <div class="cards-container" data-cards-car-id="{{carId}}">
 
-<input type="file" id="myFile" name="myFile"><br>
-<input type="button" id="upload" value="Upload"><br>
-<progress id="prog" value="0" min="0" max="100"></progress>
+<i class="fas fa-upload subir-fichero-form"></i>
+
+<div class="container-form-new-file d-none">
+
+  <h1 class="font-weight-bold">SUBIR ARCHIVO</h1>
+  <h3>Tipo de Archivo</h3>
+
+  <select class="select-tipo-file text-center">
+    <option class="text-center" value="Seguro">Seguro</option>
+    <option class="text-center" value="Contrato">Contrato</option>
+    <option class="text-center" value="Alta">Alta</option>
+    <option class="text-center" value="Baja">Baja</option>
+    <option class="text-center" value="Incidencia">Incidencia</option>
+  </select><br>
+
+  <input type="file" id="myFile" name="myFile"><br>
+  <input type="button" id="upload" value="Upload"><br>
+  <progress id="prog" value="0" min="0" max="100"></progress>
+</div>
 
   {{#each arrayFiles}}
 
@@ -14,7 +30,7 @@
         <h2 class="text-center">{{id_vehiculo}}</h2>
 
         <a href="http://localhost/finalJs/ClientesApp/API/uploadedFiles/{{nombre}}" class="btn btn-primary" download>Download</a>
-        <a href="#!" class="btn btn-primary">Delete File</a>
+        <a href="#!" class="btn btn-primary eliminarFichero">Delete File</a>
 
       </div>
     </div>
